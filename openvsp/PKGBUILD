@@ -1,4 +1,6 @@
-# Maintainer Michael Hubbard <pacman@binarygrove.com>
+# Maintainer: Michael Hubbard <pacman@binarygrove.com>
+# This PKGBUILD is maintained at https://github.com/binarygrove/aur-pkgbuild/tree/master/openvsp
+
 pkgname=openvsp
 pkgver=3.0.4
 pkgrel=1
@@ -11,7 +13,7 @@ makedepends=('cmake')
 conflicts=()
 provides=()
 source=(
-    "https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_3.0.4.tar.gz"
+    "https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz"
     "VBO.printf.patch")
 md5sums=('bdd6b401e310e185076edd9aa3739f75'
          'b0557777924d98d1453494e4aeac46b5')
@@ -28,11 +30,10 @@ prepare() {
 }
          
 build() {
-    cd "${srcdir}/build/"
+    cd "${srcdir}/build"
     
     cmake ../OpenVSP-OpenVSP_${pkgver}/SuperProject \
         -DCMAKE_PREFIX_PATH='/usr' \
-        -DCMAKE_INSTALL_PREFIX='/opt' \
         -DVSP_USE_SYSTEM_FLTK=1 \
         -DVSP_USE_SYSTEM_GLEW=1 \
         -DVSP_USE_SYSTEM_LIBXML2=1
